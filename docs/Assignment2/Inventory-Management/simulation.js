@@ -41,6 +41,8 @@ sim.model.setupStatistics = function () {
   sim.stat.nmrOfStockOuts = 0;
   sim.stat.lostSales = 0;
   sim.stat.serviceLevel = 0.0;
+  sim.stat.totalInventoryCosts = 0.0;
+  sim.stat.inventorySize = 0;
 };
 sim.model.computeFinalStatistics = function () {
   // percentage of business days without stock-outs

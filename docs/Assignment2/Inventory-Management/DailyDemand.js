@@ -7,6 +7,12 @@ class DailyDemand extends eVENT {
   onEvent() {
     var q = this.quantity,
         prevStockLevel = this.shop.stockQuantity;
+    
+      sim.stat.inventorySize = q;
+    
+    // update totalInventoryCosts
+    sim.stat.totalInventoryCosts += q * 0.2;
+
     // update lostSales if demand quantity greater than stock level
     if (q > prevStockLevel) {
       // increment the stock-out counter by 1
