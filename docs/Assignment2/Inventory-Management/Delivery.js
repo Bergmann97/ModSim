@@ -7,6 +7,12 @@ class Delivery extends eVENT {
   onEvent() {
     var followupEvents=[];
     this.receiver.stockQuantity += this.quantity;
+    
+    // MBE: update totalInventoryCosts: 50 Euro due to needed delivery
+    console.log("Restock for 50€");
+    sim.stat.totalInventoryCosts += 50.00;
+    console.log(sim.stat.totalInventoryCosts);
+
     if (sim.model.p.reviewPolicy === "continuous") {
       // schedule another Delivery if stock level is not raised above reorder level
       if (this.receiver.stockQuantity <= this.receiver.reorderPoint ) {
