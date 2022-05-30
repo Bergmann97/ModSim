@@ -2,7 +2,7 @@
  Simulation Scenario Settings
 ********************************************************/
 sim.scenario.title = "Basic scenario with a continuous review policy";
-sim.scenario.durationInSimTime = 1000;  // days
+sim.scenario.durationInSimTime = 50;  // days
 //sim.scenario.durationInSimSteps = 1000;
 //sim.scenario.durationInCpuTime = 1000;  // seconds
 /*******************************************************
@@ -41,8 +41,7 @@ sim.model.setupStatistics = function () {
   sim.stat.nmrOfStockOuts = 0;
   sim.stat.lostSales = 0;
   sim.stat.serviceLevel = 0.0;
-  sim.stat.totalInventoryCosts = 0.0;
-  sim.stat.inventorySize = 0;
+  sim.stat.totalInventoryCosts = 0.00;
 };
 sim.model.computeFinalStatistics = function () {
   // percentage of business days without stock-outs
