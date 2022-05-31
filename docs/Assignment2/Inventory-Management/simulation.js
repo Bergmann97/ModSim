@@ -2,7 +2,7 @@
  Simulation Scenario Settings
 ********************************************************/
 sim.scenario.title = "Basic scenario with a continuous review policy";
-sim.scenario.durationInSimTime = 50;  // days
+sim.scenario.durationInSimTime = 100;  // days
 //sim.scenario.durationInSimSteps = 1000;
 //sim.scenario.durationInCpuTime = 1000;  // seconds
 /*******************************************************
@@ -16,7 +16,10 @@ sim.model.eventTypes = ["DailyDemand", "Delivery"];
 // Model parameters
 sim.model.p.reviewPolicy = "periodic";  // "continuous" or "periodic"
 sim.model.p.reorderInterval = 3;
-sim.model.p.reorderPoint = 50;
+// sim.model.p.reorderPoint = 50;
+// sim.model.p.reorderPoint = 52.5;  // reorder point calculated by "max-average" method
+// sim.model.p.reorderPoint = 106;  // reorder point calculated with Z-Score with target service level of 95%
+sim.model.p.reorderPoint = 136.75;  // reorder point calculated with Z-Score with target service level of 99%
 sim.model.p.targetInventory = 100;
 /*******************************************************
  Initial State

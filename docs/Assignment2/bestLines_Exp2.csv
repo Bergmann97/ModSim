@@ -1,0 +1,3 @@
+,experimentScenarioNo,parameters,nmrOfStockOuts,lostSales,serviceLevel,totalInventoryCosts
+29,29,periodic/2/40/100,0.14,1.54,99.86,3886.962
+52,52,periodic/4/60/90,10.52,115.92,89.48,2301.874
