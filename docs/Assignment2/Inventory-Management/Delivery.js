@@ -6,6 +6,7 @@ class Delivery extends eVENT {
   }
   onEvent() {
     var followupEvents=[];
+    this.receiver.prevStockQuantity = this.receiver.stockQuantity ;
     this.receiver.stockQuantity += this.quantity;
     
     // MBE: update totalInventoryCosts: 50 Euro due to needed delivery

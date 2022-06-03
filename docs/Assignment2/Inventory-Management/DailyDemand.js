@@ -5,8 +5,12 @@ class DailyDemand extends eVENT {
     this.shop = shop;
   }
   onEvent() {
+    console.log("Beginning of Daily Demand! PrevStockQuantity:");
+    console.log(this.shop.prevStockQuantity);
+
     var q = this.quantity,
-        prevStockLevel = this.shop.stockQuantity;
+        prevStockLevel = this.shop.stockQuantity,
+        prevStepStockLevel = this.shop.prevStockQuantity;
     
     // update lostSales if demand quantity greater than stock level
     if (q > prevStockLevel) {
@@ -24,12 +28,13 @@ class DailyDemand extends eVENT {
     }
     // update stockQuantity
     this.shop.stockQuantity = Math.max( prevStockLevel-q, 0);
+    this.shop.prevStockQuantity = this.shop.stockQuantity;
 
     // MBE: update totalInventoryCosts: 0.2 Euro per unit as holding costs
     // (stockBeginningDay + stockEndDay)/2
     console.log("Inventory Holding Costs:");
-    console.log(((prevStockLevel + this.shop.stockQuantity)/2) * 0.20);
-    sim.stat.totalInventoryCosts += ((prevStockLevel + this.shop.stockQuantity)/2) * 0.20;
+    console.log(((prevStepStockLevel + this.shop.stockQuantity)/2) * 0.20);
+    sim.stat.totalInventoryCosts += ((prevStepStockLevel + this.shop.stockQuantity)/2) * 0.20;
 
     switch (sim.model.p.reviewPolicy) {
     case "continuous":

@@ -32,7 +32,8 @@ sim.scenario.setupInitialState = function () {
     stockQuantity: 80,
     reorderPoint: sim.model.p.reorderPoint,
     targetInventory: sim.model.p.targetInventory,
-    reorderInterval: sim.model.p.reorderInterval
+    reorderInterval: sim.model.p.reorderInterval,
+    prevStockQuantity: 80,
   });
   // Schedule initial events
   sim.FEL.add( new DailyDemand({occTime:1, quantity:25, shop: tvShop}));
