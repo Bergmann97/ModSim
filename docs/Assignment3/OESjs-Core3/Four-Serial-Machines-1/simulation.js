@@ -20,6 +20,12 @@ sim.model.networkNodes = {
       successorNodeName: "M2"},
   "M2": {typeName:"ProcessingNode", name:"M2",
       processingDuration: () => rand.triangular( 0.5, 1.5, 1),
+      successorNodeName: "M3"},
+  "M3": {typeName:"ProcessingNode", name:"M3",
+      processingDuration: () => rand.triangular( 2, 3, 4),
+      successorNodeName: "M4"},
+  "M4": {typeName:"ProcessingNode", name:"M4",
+      processingDuration: () => rand.triangular( 0.5, 1.0, 1.5),
       successorNodeName: "orderExit"},
   "orderExit": {typeName:"ExitNode", name:"orderExit",
     onDeparture: function (processingObject) {
