@@ -22,10 +22,10 @@ sim.model.networkNodes = {
       processingDuration: () => rand.triangular( 0.5, 1.5, 1),
       successorNodeName: "M3"},
   "M3": {typeName:"ProcessingNode", name:"M3",
-      processingDuration: () => rand.triangular( 2, 3, 4),
+      processingDuration: () => rand.triangular( 2, 4, 3),
       successorNodeName: "M4"},
   "M4": {typeName:"ProcessingNode", name:"M4",
-      processingDuration: () => rand.triangular( 0.5, 1.0, 1.5),
+      processingDuration: () => rand.triangular( 0.5, 1.5, 1.0),
       successorNodeName: "orderExit"},
   "orderExit": {typeName:"ExitNode", name:"orderExit",
     onDeparture: function (processingObject) {
@@ -56,7 +56,27 @@ sim.scenarios[1] = {
   setupInitialState: function () {
     sim.scenario.networkNodes["M1"].duration = () => rand.triangular( 0.5, 1.5, 1);
     sim.model.p.manufacturingCostsPerOrder += 0.75;
-  }
+  },
+};
+sim.scenarios[2] = {
+  scenarioNo: 2,
+  title: "Scenario with an additional worker at M2",
+  description: `<p>Based on the default scenario, in this model variant an additional worker has been added to M2, 
+  which decreases the processing time to Tri(0.25,0.5,0.25) and increases manufacturing costs by 0.75 cost units.</p>`,
+  setupInitialState: function () {
+    sim.scenario.networkNodes["M2"].duration = () => rand.triangular( 0.25, 0.5, 0.25);
+    sim.model.p.manufacturingCostsPerOrder += 0.75;
+  },
+};
+sim.scenarios[3] = {
+  scenarioNo: 3,
+  title: "Scenario with an improved new worker at M3",
+  description: `<p>Based on the default scenario, in this model variant an additional worker has been added to M2, 
+  which decreases the processing time to Tri(1,1.5,2) and increases manufacturing costs by 0.25 cost units.</p>`,
+  setupInitialState: function () {
+    sim.scenario.networkNodes["M3"].duration = () => rand.triangular( 1, 2, 1.5);
+    sim.model.p.manufacturingCostsPerOrder += 0.25;
+  },
 };
 /*******************************************************
  Statistics variables
