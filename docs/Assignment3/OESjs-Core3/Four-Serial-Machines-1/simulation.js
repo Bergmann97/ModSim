@@ -71,10 +71,34 @@ sim.scenarios[2] = {
 sim.scenarios[3] = {
   scenarioNo: 3,
   title: "Scenario with an improved new worker at M3",
-  description: `<p>Based on the default scenario, in this model variant an additional worker has been added to M2, 
+  description: `<p>Based on the default scenario, in this model variant M3 was replaced by a more skilled one, 
   which decreases the processing time to Tri(1,1.5,2) and increases manufacturing costs by 0.25 cost units.</p>`,
   setupInitialState: function () {
     sim.scenario.networkNodes["M3"].duration = () => rand.triangular( 1, 2, 1.5);
+    sim.model.p.manufacturingCostsPerOrder += 0.25;
+  },
+};
+sim.scenarios[4] = {
+  scenarioNo: 4,
+  title: "Scenario with an improved new worker at M3 and 3/4 (orders/days)",
+  description: `<<p>Based on the default scenario, in this model variant M3 was replaced by a more skilled one, 
+  which decreases the processing time to Tri(1,1.5,2) and increases manufacturing costs by 0.25 cost units. 
+  On average 3 orders are accepted every 4 days</p>`,
+  setupInitialState: function () {
+    sim.scenario.networkNodes["M3"].duration = () => rand.triangular( 1, 2, 1.5);
+    sim.scenario.networkNodes["orderEntry"].arrivalRate = 3/4;
+    sim.model.p.manufacturingCostsPerOrder += 0.25;
+  },
+};
+sim.scenarios[5] = {
+  scenarioNo: 5,
+  title: "Scenario with an improved new worker at M3 and 3/5 (orders/days)",
+  description: `<<p>Based on the default scenario, in this model variant M3 was replaced by a more skilled one, 
+  which decreases the processing time to Tri(1,1.5,2) and increases manufacturing costs by 0.25 cost units. 
+  On average 3 orders are accepted every 5 days</p>`,
+  setupInitialState: function () {
+    sim.scenario.networkNodes["M3"].duration = () => rand.triangular( 1, 2, 1.5);
+    sim.scenario.networkNodes["orderEntry"].arrivalRate = 3/5;
     sim.model.p.manufacturingCostsPerOrder += 0.25;
   },
 };
